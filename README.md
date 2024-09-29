@@ -91,7 +91,8 @@ console.log(userName);
 
 ___  
 
-[Scroll_To_Top](docs/JAVASCRIPT_OUTPUT_BASED_QUESTIONS.md)
+
+[Scroll_To_Top](README.md)
 
 ## Day 2  
 
