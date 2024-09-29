@@ -217,7 +217,7 @@ console.log(!"javascript")
 
 ___  
 
-<a href="#top" id="back-to-top">Back to Top</a>
+[Scroll To Top](#my-custom-anchor-point)
 
 ## Day 3
 
@@ -261,7 +261,91 @@ showModel();
 </details>
 
  ####  13. What will be the output ?
- 
+ ```js
+function Human(fName,lName){
+    this.firstName=fName;
+    this.lastName=lName;
+}
+
+const Name1=Human("sachin","Deshpande");
+console.log(Name1)
+
+const Name2=new Human("sachin","Deshpande");
+console.log(Name2)
+```
+<details>
+ <summary>View Answer</summary>
+
+  - Output:-  
+    - undefined  
+    - { firstName: 'sachin', lastName: 'Deshpande' }  
+ - Reason:-
+    - Here, you're calling Human without the `new` keyword. `This` means:`this` inside Human will refer to the global object (in non-strict mode) or be undefined (in strict mode).
+    - As a result, `Name1` will be `undefined`, and the firstName and lastName properties won't be set on any object.
+    - Using `new` creates an instance of the object, while calling the constructor without `new` results in `undefined` since it doesn't create a new object.  
+
+</details>
+
+
+ ####  14. What will be the output ?
+ ```js
+function getSummary(one,two,three){
+    console.log(one)
+    console.log(two)
+    console.log(three)
+}
+
+
+const name="Sachin";
+const age=24;
+getSummary`${name} age is ${age}`
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - [ ' ', ' age is ', ' ' ]  
+    - Sachin  
+    - 24
+ - Reason:-
+    - The template literal `${name} age is ${age}` is passed to the `getSummary` function as its first argument. In a tagged template literal, the first argument is an array of strings where interpolated values are injected as separate arguments.
+    - In this case, the array passed to `getSummary` would be `["", " age is ", ""]`.
+    - The subsequent arguments are the evaluated values of the expressions inside the template literal. So, `name` evaluates to `"Sachin"` and `age` evaluates to `24`.
+    - Hence, when `getSummary` is called, `one` receives the array `["", " age is ", ""]`, `two` receives the value of `name` (which is `"Sachin"`), and `three` receives the value of `age` (which is `24`).
+    - The `console.log` statements inside `getSummary` print these values accordingly.
+  
+</details>
+
+
+ ####  15. What will be the output ?
+ ```js
+function checkAge(data){
+    if(data==={age:18}){
+        console.log("1")
+    }
+    else if(data == {age:18}){
+        console.log("2")
+    }
+    else{
+        console.log("3")
+    }
+}
+checkAge({age:18})
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - 3 
+ - Reason:-
+    -  When comparing objects in JavaScript using `==` or `===`, it checks for reference equality, meaning it checks if both objects reference the same location in memory, not if they have the same properties and values.   
+    - In the `checkAge` function:The first `if` statement compares the `data` object to `{age: 18}` using `===`. Even though both objects have the same properties and values, they are different objects in memory, so the condition evaluates to `false`.
+    - The second `else if` statement similarly compares the `data` object to `{age: 18}` using `==`, and again, it evaluates to `false` due to reference inequality.
+    - As both the `if` and `else if` conditions evaluate to `false`, the `else` block is executed, and `"3"` is logged to the console.
+
+</details>
 
 
   
