@@ -1,1 +1,1 @@
-# JAVASCRIPT_OUTPUT
+# Javascript Output Based Questions
