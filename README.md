@@ -2,6 +2,8 @@
 #### 😍This repo contain 100+ javascript Output based questions With detail explaination which we will cover each and every topic and and i will add 5 question every day.
 ___
 
+<a name="my-custom-anchor-point"></a>
+
 ## Day 1
  ####  1. What will be the output ?
  ``` js
@@ -92,7 +94,8 @@ console.log(userName);
 ___  
 
 
-<a href="#top" id="back-to-top">Back to Top</a>  
+ 
+[Scroll To Top](#my-custom-anchor-point)
 
 
 ## Day 2  
