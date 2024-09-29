@@ -89,4 +89,123 @@ console.log(userName);
  - Reason:-Setting user to null does not remove the object from userName, because the array holds a separate reference to the object.
 </details>
 
+## Day 2  
+
+ ####  6. What will be the output ?
+ ```js
+(function(){
+    var a=b=3;
+})();
+
+
+console.log(typeof a !=='undefined');
+console.log(typeof b !=='undefined');
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - false  
+    - true  
+ - Reason:-
+    - var a = b = 3;: This is interpreted as b = 3 followed by var a = b. The variable a is declared with var, which makes it function-scoped, so it is not accessible outside the function.Inside the function, typeof a would be 'number'Outside the function, a is not defined, so typeof a will be 'undefined'.  
+    - On the other hand, b = 3 is not declared with var, let, or const. This makes b implicitly global (attached to the global object), so it is accessible outside the function.So type of b is number
+</details>
+
+ ####  7. What will be the output ?
+```js
+var a={},b={key:'b'},c={key:'c'};
+
+
+a[b]=123;
+a[c]=456;
+
+
+console.log(a[b]);
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-456
+ - Reason:-
+ - In JavaScript, object keys are internally converted to strings. When you use objects as keys in another object, they are converted to strings using their toString() method.
+ - In this case, b and c are both objects, but when used as keys in object a, they are converted to strings.
+ - Both b and c will have the same string representation, which is "[object Object]". This is because their default toString() method returns [object Object].
+ - So, a[b] and a[c] essentially refer to the same property in object a.
+ - Therefore, when you set a[b] = 123 and then a[c] = 456, you are essentially overwriting the value of the property "[object Object]" in object a.
+ - Hence, console.log(a[b]) will output 456, as it accesses the property with the key "[object Object]" in object a, which has been overwritten with the value 456.
+
+</details>
+
+ ####  8. What will be the output ?
+ ```js
+function showData(){
+    console.log(name);
+    console.log(age);
+    var name="heleo";
+    let age=23;
+}
+showData();
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-
+     - undefined
+     - error, let variable are in temporal dead zone so we cannot access before initilization 
+ - Reason:-
+</details>
+
+ ####  9. What will be the output ?
+```js
+const income={
+    skills:108,
+    monthly(){
+      return this.skills * 108  
+    },
+    yearly:()=>888 * this.skills
+}
+
+
+console.log(income.monthly());
+console.log(income.yearly());
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-
+      - 102110
+      - NaN
+ - Reason:- because arrow function is refers to parent object and parent of income object is window and inside window object it does not find yearly() method so that's why this.skills is evaluated is undefined and any number multiply by undefined then answer is NAN
+
+</details>
+
+ ####  10. What will be the output ?
+ ```js
+console.log(+true)
+console.log(-true)
+console.log(+false)
+console.log(-false)
+console.log(!"javascript")
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-
+      - 1
+      - -1
+      - 0
+      - -0 or 0
+      - false
+ - Reason:- 
+    
+ - Reason:-  
+        - The unary + operator converts the boolean true to a number.true is converted to 1.  
+        - The unary - operator converts the boolean true to a number and then negates it.true is converted to 1, and negating it gives -1  
+        - The unary + operator converts the boolean false to a number.false is converted to 0.  
+        - The unary - operator converts the boolean false to a number and then negates it.false is converted to 0, and negating it gives 0  
+        - The logical NOT operator ! checks the truthiness of the string "javascript".Since non-empty strings are truthy, !"javascript" evaluates to false
+</details>
+
+
 
