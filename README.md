@@ -1,5 +1,5 @@
 # Javascript Output Based Questions
-#### This repo contain 100+ javascript Output based questions With detail explaination and and i will add 5 question every day.
+#### This repo contain 100+ javascript Output based questions With detail explaination which we will cover each and every topic and and i will add 5 question every day.
 ___
 
 ## Day 1
