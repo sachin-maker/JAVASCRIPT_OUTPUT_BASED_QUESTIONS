@@ -92,20 +92,7 @@ console.log(userName);
 ___  
 
 
-<a href="#top" id="back-to-top">Back to Top</a>
-<script>
-const backToTopBtn = document.getElementById('back-to-top');
-
-window.addEventListener('scroll', () => {
-if (window.scrollY > 100) {
-backToTopBtn.style.display = 'block';
-} else {
-backToTopBtn.style.display = 'none';
-}
-});
-</script>   
-
-
+<a href="#top" id="back-to-top">Back to Top</a>  
 
 
 ## Day 2  
@@ -228,20 +215,6 @@ console.log(!"javascript")
 ___  
 
 <a href="#top" id="back-to-top">Back to Top</a>
-<script>
-const backToTopBtn = document.getElementById('back-to-top');
-
-window.addEventListener('scroll', () => {
-if (window.scrollY > 100) {
-backToTopBtn.style.display = 'block';
-} else {
-backToTopBtn.style.display = 'none';
-}
-});
-</script>   
-
-
-
 
 ## Day 3
 
