@@ -1,5 +1,5 @@
-# Javascript Output Based Questions
-#### This repo contain 100+ javascript Output based questions With detail explaination which we will cover each and every topic and and i will add 5 question every day.
+# 🚀 Javascript Output Based Questions
+#### 😍This repo contain 100+ javascript Output based questions With detail explaination which we will cover each and every topic and and i will add 5 question every day.
 ___
 
 ## Day 1
@@ -90,6 +90,8 @@ console.log(userName);
 </details>
 
 ___  
+
+[Scroll_To_Top](docs/JAVASCRIPT_OUTPUT_BASED_QUESTIONS.md)
 
 ## Day 2  
 
@@ -207,6 +209,57 @@ console.log(!"javascript")
     - The unary `-` operator converts the boolean `false` to a number and then negates it. `false` is converted to `0`, and negating it gives `0`.  
     - The logical NOT operator `!` checks the truthiness of the string `"javascript"`. Since non-empty strings are truthy, `!"javascript"` evaluates to `false`.
 </details>
+
+___  
+
+## Day 3
+
+ ####  11. What will be the output ?
+```js
+let message='heelo';
+mesage={data:[24]}
+
+
+console.log(mesage)
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-{ data: [ 24 ] }
+ - Reason:-because js internally declared the undeclared variable
+</details>
+
+ ####  12. What will be the output ?
+ ```js
+function showModel(){
+    console.log(showModel.timeout);
+}
+showModel();
+showModel.timeout=200;
+
+
+showModel.timeout=100;
+showModel();
+```
+<details>
+ <summary>View Answer</summary>
+
+- Output:
+    - undefined
+    - 100
+         
+- Reason:
+    - Initial Call (showModel()): When the function showModel() is first called, the property timeout has not yet been assigned, so console.log(showModel.timeout) will output undefined.
+    
+</details>
+
+ ####  13. What will be the output ?
+ 
+
+
+  
+
+
 
 
 
