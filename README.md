@@ -89,9 +89,4 @@ console.log(userName);
  - Reason:-Setting user to null does not remove the object from userName, because the array holds a separate reference to the object.
 </details>
 
- ####  6. What will be the output
- ####  7. What will be the output
- ####  8. What will be the output
- ####  9. What will be the output
- ####  10. What will be the output
- ####  11. What will be the output
+
