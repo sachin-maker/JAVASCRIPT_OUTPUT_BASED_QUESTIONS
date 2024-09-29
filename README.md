@@ -153,7 +153,7 @@ showData();
  - Output:-
      - undefined
      - error, let variable are in temporal dead zone so we cannot access before initilization 
- - Reason:-
+  
 </details>
 
  ####  9. What will be the output ?
@@ -191,21 +191,21 @@ console.log(!"javascript")
 <details>
  <summary>View Answer</summary>
 
- - Output:-
-      - 1
-      - -1
-      - 0
-      - -0 or 0
-      - false
- - Reason:- 
-    
- - Reason:-  
-        - The unary + operator converts the boolean true to a number.true is converted to 1.  
-        - The unary - operator converts the boolean true to a number and then negates it.true is converted to 1, and negating it gives -1  
-        - The unary + operator converts the boolean false to a number.false is converted to 0.  
-        - The unary - operator converts the boolean false to a number and then negates it.false is converted to 0, and negating it gives 0  
-        - The logical NOT operator ! checks the truthiness of the string "javascript".Since non-empty strings are truthy, !"javascript" evaluates to false
+ - Output:
+    - 1
+    - -1
+    - 0
+    - -0 (or 0)
+    - false
+  
+ - Reason: 
+    - The unary `+` operator converts the boolean `true` to a number. `true` is converted to `1`.  
+    - The unary `-` operator converts the boolean `true` to a number and then negates it. `true` is converted to `1`, and negating it gives `-1`.  
+    - The unary `+` operator converts the boolean `false` to a number. `false` is converted to `0`.  
+    - The unary `-` operator converts the boolean `false` to a number and then negates it. `false` is converted to `0`, and negating it gives `0`.  
+    - The logical NOT operator `!` checks the truthiness of the string `"javascript"`. Since non-empty strings are truthy, `!"javascript"` evaluates to `false`.
 </details>
+
 
 
 
