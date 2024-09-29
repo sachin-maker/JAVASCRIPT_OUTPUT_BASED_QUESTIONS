@@ -91,7 +91,7 @@ console.log(userName);
 
 ___  
 
-<a href="#top" id="back-to-top">Back to Top</a>
+
 <a href="#top" id="back-to-top">Back to Top</a>
 
 ## Day 2  
@@ -212,6 +212,8 @@ console.log(!"javascript")
 </details>
 
 ___  
+
+<a href="#top" id="back-to-top">Back to Top</a>
 
 ## Day 3
 
