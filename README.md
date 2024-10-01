@@ -347,8 +347,131 @@ checkAge({age:18})
 
 </details>
 
+____
+
+[Scroll To Top](#my-custom-anchor-point)
+
+## Day 4
+
+ ####  16. What will be the output ?
+ ```js
+function hello(...args){
+    console.log(typeof args)
+}
+hello(108)
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - Object  
+ - Reason:-
+    - The `hello` function is defined with the rest parameter syntax `...args`, which allows it to accept an arbitrary number of arguments as an array.   
+    - When you log `typeof args`, it outputs `"object"`, because in JavaScript, arrays are considered objects. Therefore, `args` is of type `"object"`.
+</details>
+
+
+ ####  17. What will be the output ?
+ ```js
+const obj = { 1: "a", 2: "b", 3: "c" };
+const sett = new Set([1, 2, 3, 4, 5]);
+
+
+console.log(obj.hasOwnProperty("1"));
+console.log(obj.hasOwnProperty(1));
+
+
+console.log(sett.has("1"));
+console.log(sett.has(1));
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - true  
+    - true
+    - false
+    - true  
+ - Reason:-
+    - The key 1 in the object is implicitly converted to a string, while the Set uses strict equality (===) without type conversion.
+    - obj.hasOwnProperty("1") returns true because object keys are stored as strings.
+    - obj.hasOwnProperty(1) returns true because 1 is implicitly converted to "1".
+    - sett.has("1") returns false because Set compares values with strict equality (no type coercion).
+    - sett.has(1) returns true because 1 is found in the Set.  
+
+</details>
+
+ ####  18. What will be the output ?
+ ```js
+function sayHi(){
+    return (()=>0)()
+}
+console.log(typeof sayHi())
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - Number    
+ - Reason:-
+    - The sayHi function returns the result of an immediately invoked arrow function (() => 0)(), which returns 0. The typeof operator applied to 0 returns "number".
+</details>
+
+
+ ####  19. What will be the output ?
+ ```js
+console.log(typeof typeof 1)
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - String  
+ - Reason:-
+    - console.log(typeof "number")    
+    - String
+</details>
 
   
+ ####  20. What will be the output ?
+ ```js
+(()=>{
+    let x,y;
+    try{
+        throw new Error
+    }
+    catch(x){
+        (x=1),(y=2);
+        console.log(x);
+    }
+        console.log(x);
+        console.log(y);
+
+
+   
+})()
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - 1  
+    - undefined
+    - 2  
+ - Reason:-
+    - console.log(x); inside the catch block logs the value of the local x, which is 1.  
+      Outside the catch block:  
+    - The first console.log(x); statement logs the value of the outer x variable, which is undefined. This is because the local x variable inside the catch block does not affect the outer x variable due to scope.
+    - The second console.log(y); statement logs the value of y, which is 2. This value was assigned inside the catch block, and it remains accessible outside the block because y is declared in a wider scope.
+
+      
+</details>
+
+
 
 
 
