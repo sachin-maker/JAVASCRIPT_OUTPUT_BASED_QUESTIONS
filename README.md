@@ -471,6 +471,27 @@ console.log(typeof typeof 1)
       
 </details>
 
+___  
+
+[Scroll To Top](#my-custom-anchor-point)
+
+## Day 5
+
+
+
+ ###  21. What will be the output ?
+ ```js
+const arr = [..."sachin"];
+console.log(arr);
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - [ 's', 'a', 'c', 'h', 'i', 'n' ] 
+</details>
+
 
 
 
