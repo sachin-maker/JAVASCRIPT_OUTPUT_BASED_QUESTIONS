@@ -493,6 +493,36 @@ console.log(arr);
 </details>
 
 
+ ####  22. What will be the output ?
+ ```js
+ function getMessage(){
+    throw "Hello World"
+}
+
+
+function sayHello(){
+    try{
+        const data=getMessage();
+        console.log("worked",data);
+    }
+    catch(e){
+        console.log("an Error",e)
+    }
+}
+sayHello();
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - an Error Hello World
+ 
+ - Reason:-
+    - In getMessage(), the throw statement is executed with the string "Hello World". This means an exception is thrown immediately, and no value is returned from the function.  
+    - The try block in sayHello() attempts to call getMessage(), but since an exception is thrown, control is passed directly to the catch block.
+</details>
+
 
 
 
