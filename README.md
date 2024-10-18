@@ -523,9 +523,179 @@ sayHello();
     - The try block in sayHello() attempts to call getMessage(), but since an exception is thrown, control is passed directly to the catch block.
 </details>
 
+ ####  23. What will be the output ?
+ ```js
+ console.log(
+    [1,2,3].map(num=>{
+    if(num  > 0)return;
+    return num * 2
+})
+)
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - [ undefined, undefined, undefined ]  
+ - Reason:-
+    - When num > 0, the function returns undefined  
+</details>
+
+ ####  24. What will be the output ?
+ ```js
+ (function(){
+    var a=b=3;
+})();
+
+
+console.log(typeof a );
+console.log(typeof b );
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - undefined  
+    - number  
+ - Reason:-
+    - a is undefined outside the function because it's a local variable and is not accessible in the global scope. 
+    - b, however, was implicitly declared as a global variable and is available globally with the value 3.
+</details>
+
+ ####  25. What will be the output ?
+ ```js
+ const obj={a:"sachin",b:"deshpande"};
+const data={c:24,...obj};
+console.log(data);
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - { c: 24, a: "sachin", b: "deshpande" }  
+ - Reason:-
+    - When creating data, the spread operator adds all the properties of obj to the data object, along with the existing property c: 24.
+</details>
+
+___  
+
+[Scroll To Top](#my-custom-anchor-point)
+
+## Day 6
 
 
 
+ ####  26. What will be the output ?
+ ```js
+ function* generatorfn(i){
+    console.log("A");
+    yield i;
+    console.log("B");
+    yield i * 2
+}
 
+
+const gen=generatorfn(10);
+
+
+console.log(gen.next().value);
+console.log(gen.next().value);
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - A  
+    - 10
+    - B
+    - 20  
+ - Reason:-
+    - The first gen.next() logs "A" and yields i (10). 
+    - The second gen.next() logs "B" and yields i * 2 (20).
+</details>
+
+ ####  27. What will be the output ?
+ ```js
+ var superHero = "SilverSurfer";
+let realName = "Noren Red";
+console.log(window.superHero);
+console.log(window.realName);
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - SilverSurfer  
+    - Undefined  
+ - Reason:-
+    - Because in js having a Global Environment record and this environment having two type ie.Object Environment record and Declarative Environment record
+    - if we declared variable using var it will add into Object Environment record and this object merge with window object  
+    - if we declared variable using let,const it will add into Declarative Environment record and this object does not merge into the window object.
+
+</details>
+
+ ####  28. What will be the output ?
+ ```js
+ let obj ={lang:'react'}
+const lib={};
+lib.name=obj;
+obj=null;
+console.log(lib.name);
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - { lang: 'react' }
+ - Reason:-
+    - lib.name = obj; assigns a reference to the object { lang: 'react'} to lib.name.
+    - When obj = null; is executed, it only changes the obj variable to null, but this doesn't affect the reference that lib.name is holding. The object { lang: 'react'} still exists in memory, and lib.name still points to it.  
+    - Therefore, console.log(lib.name) will output the original object { lang: 'react' }.
+</details>
+
+ ####  29. What will be the output ?
+ ```js
+ function show(){
+this.lang='react';
+this.showLang=()=>{
+console.log(this.lang)
+}
+}
+const data=new show();
+const fn=data.showLang;
+fn();
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - react  
+ - Reason:-
+    -  showLang is defined as an arrow function. Arrow functions do not have their own this; they inherit the this from the context in which they are defined.
+</details>
+
+ ####  30. What will be the output ?
+ ```js
+ var x=[typeof x, typeof y][1];
+console.log(typeof typeof x)
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - string  
+ - Reason:-
+    -  var x=["undefined","undefined"][1] 
+    - typeof x: Since x is now "undefined" (a string), typeof x returns "string".
+    - typeof typeof x: Since typeof x itself is a string ("string"), typeof typeof x evaluates to "string".
+</details>
 
 
