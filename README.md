@@ -809,3 +809,154 @@ console.log(list.push(4))
     - because push method return length of an array so value list variable is 3 and now list variable is integer and we are try to push value to interger variable thats not correct so throw an error.
 
 </details>
+
+___  
+
+
+[Scroll To Top](#my-custom-anchor-point)
+
+## Day 8
+
+
+ ####  36. What will be the output ?
+ ```js
+ function num(a,b){
+if(a > b) console.log(" a is large")
+else console.log("b is large")
+return
+a+b;
+}
+console.log(num(4,2))
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - a is large  
+    - undefined  
+ - Reason:-
+    - undefined because after semicoln return statement if there is any value is exist then it is undefined
+    - but there no semicoln after return satment then js engine automatically added semicolon internally
+
+</details>
+
+
+ ####  37. What will be the output ?
+ ```js
+ const one =false || {} || null ;
+const two =null || false || ' ' ;
+const three=[] || 0 || true;
+console.log(one,two,three);
+```
+
+<details>
+  <summary>View Answer</summary>
+
+### Output:
+- `{}` 
+- `" "` 
+- `[]`
+
+### Reason:
+- **JavaScript's logical OR (`||`) operator** evaluates expressions from left to right and returns the first truthy value. If all values are falsy, it returns the last value.
+
+#### Example 1:
+```javascript
+const one = false || {} || null;
+```
+- `false` is falsy, so evaluation continues.  
+- `{}` (an empty object) is truthy, so the result is `{}`.  
+- The evaluation stops here, and `one` is `{}`.
+
+#### Example 2:
+```javascript
+const two = null || false || ' ';
+```
+- `null` is falsy, so evaluation continues.  
+- `false` is also falsy, so evaluation continues.  
+- `' '` (a non-empty string with a space) is truthy, so the result is `' '` (a space).  
+- The evaluation stops here, and `two` is `' '`.
+
+#### Example 3:
+```javascript
+const three = [] || 0 || true;
+```
+- `[]` (an empty array) is truthy, so the result is `[]`.  
+- The evaluation stops here, and `three` is `[]`.
+</details>
+
+
+ ####  38. What will be the output ?
+ ```js
+ console.log(`${(x=>x)("I Love")} JS`)
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - I Love JS
+</details>
+
+ ####  39. What will be the output ?
+ ```js
+ let randomValue={name:"Sachin"};
+randomValue=10;
+if(! typeof randomValue ==="string"){
+console.log("not a string");
+}
+else{
+console.log("its string")
+}
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - its string  
+ - Reason:-
+    -  typeof randomValue="Number"  
+    -  !  "Number"==="string"
+
+</details>
+
+ ####  40. What will be the output ?
+ ```js
+ const arr = [10,20,30];
+arr.slice(0,1);
+arr.splice(0,1);
+arr.unshift(40);
+console.log(arr)
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - [40, 20, 30]
+ - Reason :-  
+
+`arr.slice(0, 1);`
+- The `slice()` method returns a shallow copy of a portion of an array without modifying the original array.
+- `arr.slice(0, 1)` extracts the element at index `0` (which is `10`) and returns `[10]`.
+- However, since this returned value is not stored or used, the original array `arr` remains unchanged: `[10, 20, 30]`.
+
+`arr.splice(0, 1);`
+- The `splice()` method modifies the original array by removing or replacing elements.
+- `arr.splice(0, 1)` removes one element starting at index `0`, which is `10`.
+- After this operation, the array becomes: `[20, 30]`.
+
+`arr.unshift(40);`
+- The `unshift()` method adds elements to the beginning of the array and modifies the array in place.
+- `arr.unshift(40)` adds `40` to the start of the array.
+- After this operation, the array becomes: `[40, 20, 30]`.
+
+</details>
+
+
+___  
+
+
+[Scroll To Top](#my-custom-anchor-point)
+
+## Day 9
