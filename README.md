@@ -699,3 +699,113 @@ console.log(typeof typeof x)
 </details>
 
 
+___  
+
+
+[Scroll To Top](#my-custom-anchor-point)
+
+## Day 7
+
+
+
+ ####  31. What will be the output ?
+ ```js
+console.log([]=="")
+console.log([]==[])
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - true  
+    - false  
+ - Reason:-
+    - When comparing [] (an empty array) with "" (an empty string) using ==, JavaScript performs type coercion.
+    - The empty array ([]) is converted to an empty string (""), so the comparison becomes "" == "", which evaluates to true
+    - In JavaScript, arrays are reference types, meaning each array is a distinct object in memory
+    - Even though both arrays are empty, they are separate objects in memory. Hence, [] == [] compares the references, not the values, and since they are different objects, the result is false.
+</details>
+
+
+ ####  32. What will be the output ?
+ ```js
+ function switch1(num){
+console.log(~~num);
+}
+switch1(1.2);
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - 1  
+ - Reason:-
+    - The ~~ (double tilde) is a bitwise operator trick that is commonly used to truncate a floating-point number and convert it into an integer.  
+    - The first ~ (bitwise NOT) flips all the bits of the number.
+    - The second ~ flips them back but results in a truncated (integer) value.
+    - ~~1.2 becomes 1 because the fractional part is discarded.
+    -  ~~ this symbol convert decimal number into floating number
+</details>
+
+
+ ####  33. What will be the output ?
+ ```js
+ async function getData(){
+return await Promise.resolve("Promise Resolved")
+}
+const data=getData();
+console.log(data);
+data.then(res=>console.log(res));
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - Promise { <pending> }  
+    - Promise Resolved  
+ - Reason:-
+    - Since getData() is an async function, it always returns a Promise, regardless of whether await is used inside the function. 
+    - So, when getData() is called, data becomes a Promise. Initially, the Promise is in the pending state.
+    - console.log(data) shows that data is a pending Promise.
+    - data.then(...) logs the resolved value of the Promise: "Promise Resolved".
+
+</details>
+
+
+ ####  34. What will be the output ?
+ ```js
+ const {fName:feDev}={fName:"Sachin"};
+console.log(fName)
+console.log(feDev)
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - Error  
+    - sachin  
+ - Reason:-
+    - In the code, const {fName: feDev} = {fName: "Sachin"};, you are using object destructuring to extract the fName property from the object and assign it to a new variable feDev. 
+    - This means feDev will hold the value of "Sachin".
+    - console.log(fName), This throws a ReferenceError because there is no variable named fName in the current scope. The object destructuring assigns the fName value to feDev, not to fName.
+    - console.log(feDev), This will print "Sachin" since the value of fName from the object is correctly assigned to feDev.
+
+</details>
+
+ ####  35. What will be the output ?
+ ```js
+ let list=[1,2].push(3);
+console.log(list.push(4))
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - error  
+ - Reason:-
+    - push is not a function 
+    - because push method return length of an array so value list variable is 3 and now list variable is integer and we are try to push value to interger variable thats not correct so throw an error.
+
+</details>
