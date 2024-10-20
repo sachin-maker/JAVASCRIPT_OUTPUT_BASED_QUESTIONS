@@ -196,6 +196,12 @@ console.log(-true)
 console.log(+false)
 console.log(-false)
 console.log(!"javascript")
+console.log(true + false)
+console.log("2"+true );
+console.log(-'34'+10 );
+console.log(+'dude');
+console.log(!'sachin' );
+
 ```
 <details>
  <summary>View Answer</summary>
@@ -205,6 +211,11 @@ console.log(!"javascript")
     - -1
     - 0
     - -0 (or 0)
+    - false
+    - 1
+    - 2true
+    - -24
+    - NaN
     - false
   
  - Reason: 
@@ -1296,3 +1307,204 @@ ___
 
 [Scroll To Top](#my-custom-anchor-point)
 ## Day 12
+
+ ####  56. What will be the output ?
+ ```js
+ const arr=[1,3,2];
+console.log(arr[5]);
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - undefined  
+ - Reason:-
+    - When you try to access an out-of-bounds index in a JavaScript array, the result is undefined
+</details>
+
+
+ ####  57. create a variable whose name is inside a variable ?
+ ```js
+ var varName ='lang';
+
+
+//first way
+window[varName]="js is love"
+console.log(lang)
+
+```
+
+ ####  58. Make sure the sum function works with n number of arguments ?
+ ```js
+ function sum(...nums){
+  return nums.reduce(function(a,n){
+      return a + n
+  },0)
+}
+console.log(sum(2,3))
+console.log(sum(2,3,4))
+console.log(sum(2,3,4,5))
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - 5  
+    - 9 
+    - 14 
+
+</details>
+
+
+ ####  59. What will be the output ?
+ ```js
+ let bool1= false;
+let bool2=new Boolean(false)
+
+
+if(bool1){
+    console.log("first boolean")
+}
+if(bool2){
+    console.log("second boolean")
+}
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - second boolean  
+    - true  
+ - Reason:-
+    - first boolean false thats why its not executed  
+    - second boolean is created using boolean constructor .when we declard variable using constructor then that variable is object and object is truthy value that's whys second block is executed.
+</details>
+
+
+
+ ####  60. Make sure expected output is 1 2 3 ?
+ ```js
+ let obj ={
+  val:1,
+  get a(){
+      return this.val++
+  }
+}
+
+
+console.log(obj.a)
+console.log(obj.a)
+console.log(obj.a)
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - 1  
+    - 2
+    - 3  
+
+</details>
+
+___  
+
+
+[Scroll To Top](#my-custom-anchor-point)
+## Day 13
+
+
+ ####  61. What will be the output ?
+ ```js
+ let arr=[9,8,7,6][1,2,3]
+console.log(arr)
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - 6  
+ - Reason:-
+    - `The comma operator` in JavaScript evaluates each of its operands (from left to right) and returns the value of the last operand. 
+    - In your expression [9, 8, 7, 6][1, 2, 3], the comma operator evaluates 1, 2, and 3 in sequence, and then the entire expression returns the value of the last operand, which is 3.
+    - Now, this becomes arr[3], where arr = [9, 8, 7, 6].
+    - The element at index 3 in the array is 6.
+</details>
+
+
+ ####  62. What will be the output ?
+ ```js
+ const {
+  a='default',
+  b='defdault',
+  c='default',
+  d='default',
+  e='default'
+}={a:null,b:undefined,c:false,d:0}
+
+
+console.log(a,b,c,d,e)
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - null  
+    - defdault
+    - false
+    - 0
+    - default  
+</details>
+
+ ####  63. What will be the output ?
+ ```js
+ console.log(null > 0)
+console.log(null == 0)
+console.log(null >= 0)
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - false  
+    - false
+    - true  
+ - Reason:-
+    - because > is used to convert null into number ie.0
+</details>
+
+ ####  64. What will be the output ?
+ ```js
+ console.log(typeof [] );
+console.log(typeof arguments );
+console.log(typeof null );
+console.log(typeof NaN );
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - Object  
+    - Object
+    - Object
+    - Number
+</details>
+
+ ####  65. What will be the output ?
+ ```js
+ let num = 0;
+console.log(num++); 
+console.log(++num); 
+console.log(num);
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - 0  
+    - 2
+    - 2  
+</details>
