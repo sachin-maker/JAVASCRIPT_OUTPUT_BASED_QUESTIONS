@@ -1188,3 +1188,111 @@ ___
 [Scroll To Top](#my-custom-anchor-point)
 
 ## Day 11
+
+ ####  51. What will be the output ?
+ ```js
+ const dataMap=new WeakMap();
+let person={name:"Sachin"};
+dataMap.set(person,"TVA");
+console.log(dataMap.get(person))
+person=null;
+console.log(dataMap.get(person));
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - TVA  
+    - Undefined  
+ - Reason:-
+    -  `WeakMap` is a collection of key-value pairs where the keys are objects. It allows for garbage collection of keys when there are no other references to the object, making it useful for cases where you don't want the map to prevent objects from being garbage collected.  
+    - `let person = { name: "Sachin" }:` You create an object person and assign it to the variable person.
+    - `dataMap.set(person, "TVA"):` This adds the person object as a key in the WeakMap, with the value "TVA".
+    - `console.log(dataMap.get(person)):-` At this point, person is still referencing the object { name: "Sachin" }, so dataMap.get(person) will return "TVA".
+    - `person = null;:` This line removes the reference to the object { name: "Sachin" }. Since WeakMap holds a weak reference to the key object, it will no longer have access to it because no other variables are referencing that object.
+    - After setting person to null, the object is eligible for garbage collection. The key no longer exists in the WeakMap, so dataMap.get(person) will return undefined.
+    
+</details>
+
+ ####  52. What will be the output ?
+ ```js
+ let x=10;
+let y=20;
+[x,y]=[y,x];
+console.log(x,y)
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - 20  10  
+ - Reason:-
+    - swap the value between two variable
+</details>
+
+ ####  53. What will be the output ?
+ ```js
+ let str=new String("JS");
+console.log(str==="JS");
+console.log(str =="JS");
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - false  
+    - true  
+ - Reason:-
+    - `===` it check type, content,reference store in memory
+    -  `==` it check only content and refernce store in memory
+
+</details>
+
+ ####  54. What will be the output ?
+ ```js
+ const obj={};
+obj[obj["A"]="B"]="c"
+console.log(obj);
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - { A: "B", B: "c" }  
+ - Reason:-
+    - `obj["A"] = "B":` This sets the property "A" on obj with the value "B". `{ A: "B" }`
+    - `obj[obj["A"]] = "c":` obj["A"] is now "B", so this becomes obj["B"] = "c".  
+    This adds a new property "B" to the object with the value "c". `{ A: "B", B: "c" }
+    - So the final result of console.log(obj) will output:
+       `{ A: "B", B: "c" }
+`
+`
+</details>
+
+ ####  55. What will be the output ?
+ ```js
+ function init(x,y,z){
+}
+function end(a,b=0,c){
+}
+console.log(init.length);
+console.log(end.length);
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - 3  
+    - 1  
+ - Reason:-
+    - when we used length property for function then it will count number of parameters thats why answer is 3 
+    - `end` function has three parameters: a, b, and c. b has a default value (b = 0), so end.length only counts the parameters before b. Therefore, end.length is 1 (because only a is counted).
+</details>
+
+
+___  
+
+
+[Scroll To Top](#my-custom-anchor-point)
+## Day 12
