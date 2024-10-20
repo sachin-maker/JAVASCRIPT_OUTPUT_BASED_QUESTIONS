@@ -960,3 +960,231 @@ ___
 [Scroll To Top](#my-custom-anchor-point)
 
 ## Day 9
+
+ ####  41. What will be the output ?
+ ```js
+ let count=0;
+const nums =[0,1,2,3];
+nums.forEach(num =>{
+if(num){
+count +=1;
+}
+})
+console.log(count);
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - 3  
+ - Reason:-
+    - why not 4 because 0 in array is a falsy value then it cant true for falsy value
+</details>
+
+ ####  42. Information   
+ 
+  - `Object . Freeze()` method does not allow to update ,delete and addition the object upto level 1
+
+ - `Object.seal ()`  doesn’t allow deletion and addition but it allow updation
+
+ ####  43. What will be the output ?
+ ```js
+ const arr=[10,20];
+({item:arr[2]}={item:30})
+console.log(arr)
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - [ 10, 20, 30 ]  
+</details>
+
+ ####  43. What will be the output ?
+ ```js
+ const foo='Sachin';
+console.log(! typeof foo =='object');
+console.log(! typeof foo =='string');
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - false  
+    - false  
+ - Reason:-  
+     `! typeof foo == 'object':`
+
+- The `typeof foo` is `'string'` because `foo` is assigned the string `'Sachin'`.
+- The expression `! typeof foo` is evaluated first because the `!` operator has higher precedence than `==`.
+- So, `! typeof foo` becomes `! 'string'`, and in JavaScript, the logical negation of any non-empty string (like `'string'`) is `false`.
+- Then, the comparison `false == 'object'` is made, which results in `false` because `false` is not equal to `'object'`.
+
+ `! typeof foo == 'string':`
+   
+
+- Similar to the first case, `! typeof foo` becomes `false` since `typeof foo` is `'string'` and negating it results in `false`.
+- Then, the comparison `false == 'string'` is made, which again results in `false` because `false` is not equal to `'string'`.
+
+</details>
+
+ ####  44. What will be the output ?
+ ```js
+ const myFunc =({x,y,z})=>{
+console.log(x,y,z);
+}
+myFunc(1,2,3);
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - undefined undefined undefined  
+ - Reason:-
+    - because myFunc expecting argument as a object but we are passing numeric value thats why its undefined  
+
+- Correct version
+```js   
+const myFunc = ({x, y, z}) => {
+    console.log(x, y, z);
+}
+
+myFunc({x: 1, y: 2, z: 3});
+
+```
+
+ 
+</details>
+
+
+ ####  45. What will be the output ?
+ ```js
+ const add =(x)=>(y)=>(z)=>{
+console.log(x+y+z)
+}
+add(10)(20)(30);
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - 60  
+ - Reason:-
+    - currying with arrow function
+</details>
+
+
+___  
+
+
+[Scroll To Top](#my-custom-anchor-point)
+
+## Day 10
+
+ ####  46. What will be the output ?
+ ```js
+ const arr=[10,20];
+if(arr.indexOf(10)){
+console.log("hello");
+}
+else{
+console.log("hi");
+}
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - hi  
+ - Reason:-
+    - The indexOf() method returns the index of the first occurrence of the specified element in the array. In this case, arr.indexOf(10) returns 0 because 10 is at index 0 in the array [10, 20]  
+    - In JavaScript, if(0) evaluates to false, since 0 is a falsy value.
+</details>
+
+
+ ####  47. What will be the output ?
+ ```js
+ const obj={name:"sachin"};
+obj.ref=obj;
+const str=JSON.stringify(obj);
+console.log(str)
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - TypeError  
+ - Reason:-
+    - `Circular Reference`:  
+The object obj contains a property ref that refers back to itself: obj.ref = obj;. This creates a circular reference because the object contains itself as one of its properties.
+
+    - `JSON.stringify(obj)`:  
+The JSON.stringify() method tries to convert an object into a JSON string. However, JSON does not support circular references. When JSON.stringify() encounters the circular structure, it throws a TypeError because it can't represent the object in JSON format.
+    
+</details>
+
+ ####  48. What will be the output ?
+ ```js
+ var hi=900;
+function hi(){
+console.log("hi")
+}
+
+console.log(hi)
+console.log(hi())
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - 900  
+    - error, hi is not a function  
+ - Reason:-
+    - When hoisting occurs, variable declarations (var) take precedence over function declarations. So, when the code is interpreted, the variable hi defined as var hi = 900 will overwrite the function hi().  
+    - First, the function hi() is hoisted to the top, followed by the variable hi being hoisted and set to undefined.
+    - Then, the variable hi is assigned the value 900, which overwrites the function hi.
+    - As a result, when you call hi(), it tries to execute hi, which is now 900 (a number), not a function. This leads to the TypeError because 900 is not callable.
+</details>
+
+ ####  49. What will be the output ?
+ ```js
+ const arr=[{key:"S"},'10','20'];
+delete arr[0];
+console.log(arr.length)
+console.log(arr)
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - 3  
+    - [ <1 empty item>, '10', '20' ] 
+</details>
+
+ ####  50. What will be the output ?
+ ```js
+ let z=a={};
+a.name="Sachin";
+console.log(z.name)
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - Sachin  
+ - Reason:-
+    - let z = a = {}; means both z and a are references to the same empty object {}. This is because in JavaScript, objects are assigned by reference, not by value.
+</details>
+
+___  
+
+
+[Scroll To Top](#my-custom-anchor-point)
+
+## Day 11
