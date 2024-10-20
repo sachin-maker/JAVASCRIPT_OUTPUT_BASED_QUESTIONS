@@ -1508,3 +1508,153 @@ console.log(num);
     - 2
     - 2  
 </details>
+
+___  
+
+
+[Scroll To Top](#my-custom-anchor-point)
+## Day 14
+
+ ####  66. What will be the output ?
+ ```js
+ function MCQ1() {
+  const person = {
+    name: "Jayesh",
+    displayName1: function () {
+      console.log("name1", this.name);
+    },
+    displayName2: () => {
+      console.log("name2", this.name);
+    },
+  };
+
+  person.displayName1();
+  person.displayName2();
+}
+MCQ1()
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - name1 Jayesh
+    - name2 undefined  
+ - Reason:-
+    - `displayName1` is a regular function, and in JavaScript, when a regular function is called as a method of an object, the value of this inside the function refers to the object on which it was called (in this case, the person object).  
+    - `displayName2` is an arrow function. Arrow functions do not have their own this context. Instead, they inherit this from the lexical scope in which they were defined (the scope in which the arrow function was created).
+    - In this case, `displayName2` was defined inside the MCQ1 function, but it does not have its own this. Instead, this in the arrow function refers to the this value of the MCQ1 function, which is global context (in non-strict mode, this is the window object in a browser).
+    - Since the window object does not have a name property, `this.name` is `undefined`. Therefore, the output is:
+</details>
+
+
+ ####  67. What will be the output ?
+ ```js
+ function MCQ2() {
+  let name = "Jayesh";
+  function printName() {
+    if (name === "Jayesh") {
+      let name = "JC";
+      console.log(name);
+    }
+    console.log(name);
+  }
+  printName();
+}
+
+MCQ2()
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - JC  
+    - Jayesh  
+ - Reason:-
+    - because let variables are block scope, name inside if condition will shadow outer name 
+</details>
+
+
+ ####  68. What will be the output ?
+ ```js
+ function MCQ3() {
+  var player = "Virat";
+  function displayPlayer() {
+    if (player === "Virat") {
+      var player = "VK";
+      console.log(player);
+    }
+    console.log(player);
+  }
+  displayPlayer()
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - undefined  
+ - Reason:-
+    - `undefined` because var variables are functional scope, When `displayPlayer` fn starts executing, Execution context of
+   displayPlayer will be created in callstack and at the memory creation phase var variable player is initialized as undefined.
+    - hence if condition will become false and It will print only undefined.
+
+</details>
+
+ ####  69. What will be the output ?
+ ```js
+ function MCQ4() {
+  const person = {
+    name: "Jayesh",
+    age: 24,
+  };
+
+
+  const getAge = person.age;
+  delete person.age;
+
+
+  console.log(person);
+  console.log(getAge);
+}
+
+MCQ4()
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - { name: 'Jayesh' }  
+    - 24  
+ - Reason:-
+    - because delete keyword deletes property of an object and we are setting getAge as pass by value.  
+</details>
+
+ ####  70. What will be the output ?
+ ```js
+ function MCQ5() {
+  // No Strict Mode
+  name = "Jayesh"; // window.name ( property of window object )
+  console.log(delete name);
+
+
+  const displayName = (function (name) {
+    console.log(delete name); // Local variable of function
+    return name;
+  })("JC");
+
+
+  console.log(displayName);
+}
+MCQ5()
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - true  
+    - false
+    - JC  
+ - Reason:-
+    - because delete keyword deletes only property of an object.
+    -  delete keyword can not delete local variables ( declared with var, let, and const ) and functions.
+    - delete keyword can delete global variables as they are property of window object.
+</details>
