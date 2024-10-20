@@ -2379,6 +2379,142 @@ inc(1)
 
 </details>
 
+___  
+
+
+[Scroll To Top](#my-custom-anchor-point)
+## Day 19
+
+ ####  91. What will be the output ?
+ ```js
+ 
+
+const promise = () => Promise.resolve("Success");
+
+function first(){
+  promise().then((res)=> console.log(res)); //async
+  console.log("First"); //sync
+}
+
+async function second(){
+  const res = await promise();
+  console.log(res); //async
+  console.log("Second"); //sync
+}
+first();
+second();
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - First  
+    - success  
+    - success
+    - second
+</details>
+
+ ####  92. What will be the output ?
+ ```js
+ const person1 = {
+  name : "Priya"
+}
+const person2 = {
+  name : "Dolly"
+}
+const person = Object.assign(person1, person2);
+
+
+console.log(person); 
+console.log(person.name); 
+console.log(person1.name); 
+console.log(person2.name); 
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - { name: 'Dolly' }  
+    - Dolly
+    - Dolly
+    - Dolly
+     
+ - Reason:-
+    - The Object.assign() method is used to copy the properties of person2 into person1:
+</details>
+
+ ####  93. What will be the output ?
+ ```js
+ const array = [8, 18, 28, 38];
+const result = array.map(element => element + 2)
+               .filter((element) => element > 25);
+console.log(result);
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - [30,40]  
+</details>
+
+ ####  94. What will be the output ?
+ ```js
+ const userDetails = {
+  firstName: "Surbhi",
+  lastName: "Dighe",
+  age: 20,
+  address: {
+    city: "Hyderabad",
+    country: "India",
+  },
+};
+
+let cloneUserDetails = { ...userDetails };
+//Updating original object
+userDetails.age = 22;
+userDetails.address.city = "Banglore";
+
+console.log(cloneUserDetails.age); 
+console.log(cloneUserDetails.address.city);
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - 20  
+    - Banglore  
+ - Reason:-
+    - The age property in cloneUserDetails remains 20 because the change was made to the original object. 
+    - The city property in cloneUserDetails.address shows Banglore because it is a reference to the same address object that was modified in userDetails.
+
+</details>
+
+ ####  95. What will be the output ?
+ ```js
+ function checkAge(data) {
+  if (data === { age: 18 }) {
+    console.log('You are an adult!');
+  } else if (data == { age: 18 }) {
+    console.log('You are still an adult.');
+  } else {
+    console.log(`Hmm.. You don't have an age I guess`);
+  }
+}
+
+checkAge({ age: 18 });
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - Hmm.. You don't have an age I guess
+   - Reason:-
+    - When testing equality, primitives are compared by their value, while objects are compared by their reference. JavaScript checks if the objects have a reference to the same location in memory.
+    - The two objects that we are comparing don't have that: the object we passed as a parameter refers to a different location in memory than the object we used in order to check equality.
+    - This is why both `{ age: 18 } === { age: 18 }` and `{ age: 18 } == { age: 18 }` return false.
+</details>
 
 
 
