@@ -200,8 +200,6 @@ console.log(true + false)
 console.log("2"+true );
 console.log(-'34'+10 );
 console.log(+'dude');
-console.log(!'sachin' );
-
 ```
 <details>
  <summary>View Answer</summary>
@@ -216,7 +214,7 @@ console.log(!'sachin' );
     - 2true
     - -24
     - NaN
-    - false
+
   
  - Reason: 
     - The unary `+` operator converts the boolean `true` to a number. `true` is converted to `1`.  
@@ -1834,6 +1832,7 @@ MCQ10()
   
     -  callback function's "this" will refer to the window object and It will console undefined as there is no property such as userName in the window object.  
 - Corrected Version
+
 ```js
 setTimeout(function () {
     user.displayName(); // Here, displayName is called by user object ( object method ). Hence, "this" will refer to user object.
@@ -1842,6 +1841,225 @@ setTimeout(function () {
 
 ```
 </details>
+
+___  
+
+
+[Scroll To Top](#my-custom-anchor-point)
+## Day 16
+
+ ####  76. What will be the output ?
+ ```js
+ function MCQ11() {
+  const series = { name: "JavaScript-with-JC" };
+
+
+  function getSatus(postNumber) {
+    return `${this.name} 🌟 ${postNumber}`;
+  }
+
+
+  console.log(getSatus.call(series, 50));
+  console.log(getSatus.bind(series, 50));
+}
+MCQ11()
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - JavaScript-with-JC 🌟 50  
+    - ƒ bound getSatus() { [native code] }  
+ - Reason:-
+    - `getSatus.call(series, 50):`  
+         - The call() method in JavaScript allows you to invoke a function immediately with a specified this value and arguments.
+         - In this case, getSatus.call(series, 50) invokes getSatus with this bound to the series object and passes 50 as the argument (postNumber).
+
+    - `getSatus.bind(series, 50):`
+         - The bind() method in JavaScript does not invoke the function immediately. Instead, it returns a new function with a bound this value and preset arguments.
+         - When you call getSatus.bind(series, 50), it returns a new function, where this is bound to series, and the first argument is preset to 50. The returned function can then be called later.
+         - The result of getSatus.bind(series, 50) is a function, not the actual result of invoking the function.
+
+- Corrected Version:-
+```js
+ // 👇 We can get 'JavaScript-with-JC 🌟 50, JavaScript-with-JC 🌟 50' as an output by calling borrowed function of bind method :-
+
+
+  console.log(getSatus.call(series, 50)); // JavaScript-with-JC 🌟 50
+  console.log(getSatus.bind(series, 50)()); // JavaScript-with-JC 🌟 50
+```
+</details>
+
+####  77. What will be the output ?
+ ```js
+ function MCQ12() {
+  var name = "Jayesh";
+
+
+  function displayName() {
+    console.log(this.name);
+  }
+
+
+  const person = {
+    name: "JC",
+    method(fn) {
+      fn();
+    },
+  };
+
+
+  person.method(displayName);
+}
+MCQ12()
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - `Jayesh` in case of browser environment or `Undefined` in case of node js environment  
+ - Reason:-
+    - `In the browser:`  
+       - When you declare a global variable using var at the top level (outside any function), it gets added as a property of the global object (window). So, var name = "Jayesh"; makes window.name = "Jayesh"
+       - When displayName is called as a regular function, this inside the function refers to window. So, this.name would resolve to "Jayesh" because window.name exists.
+
+    - `In Node.js:`  
+       - Global variables declared with var are not automatically attached to the global object. So, even though var name = "Jayesh"; declares a global variable, it doesn't become global.name.
+       - When displayName is invoked as a regular function, this will refer to global, and global.name doesn't exist, resulting in undefined.
+</details>
+
+
+####  78. What will be the output ?
+ ```js
+ function MCQ13() {
+  var length = 4;
+
+
+  function callback() {
+    console.log(this.length);
+  }
+
+
+  const object = {
+    length: 5,
+    method: function () {
+      arguments[0]();
+    },
+  };
+
+
+  object.method(callback, 2, 3);
+}
+MCQ13()
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - 3  
+ - Reason:
+    - The method object.method(callback, 2, 3) is called, passing the callback function and two other arguments 2 and 3.   
+    - Inside the method, the arguments object contains [callback, 2, 3].
+    - `arguments[0]()` means the callback function is invoked, but the context (this) of callback is now arguments.
+    - When callback() is called as arguments[0](), the this value inside callback refers to the arguments object.
+    - The arguments object has a length property, which is equal to the number of arguments passed to method, which is 3 (callback, 2, 3).
+    - So, this.length inside the callback function refers to arguments.length, which is 3.
+
+</details>
+
+
+####  79. What will be the output ?
+ ```js
+ function MCQ14() {
+  var name = "Jayesh";
+
+
+  function displayName() {
+    console.log(this.name);
+  }
+
+
+  const person = {
+    name: "JC",
+    method: displayName.bind(this),
+  };
+
+
+  person.method();
+}
+MCQ14()
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - `Jayesh` in browser level or `undefined` in node js level  
+ - Reason:-
+    - `In a Browser`
+       -  In a browser environment, this at the top level refers to the window object.
+       - When you declare var name = "Jayesh", it becomes window.name = "Jayesh".
+       - When displayName.bind(this) is used, this refers to the global window object.
+       - So, when person.method() is called, it will log "Jayesh" because this.name refers to window.name.
+    - `In Node.js`
+       - In Node.js, this at the top level does not refer to the global object (global). Instead, this is undefined in a top-level script.
+       - As a result, when displayName.bind(this) is called, this will refer to undefined. Since this.name does not exist, the output will be undefined.
+
+- Corrected Version:-
+```js
+function MCQ14() {
+  var name = "Jayesh";
+
+
+  function displayName() {
+    console.log(this.name);
+  }
+
+
+  const person2 = {
+    name: "JC",
+    method: function () {
+      return displayName.bind(this); // Here, "this" refers to the person2 object
+    },
+  };
+
+
+  person2.method()(); // JC
+}
+
+MCQ14()
+```
+</details>
+
+
+####  80. What will be the output ?
+ ```js
+ function MCQ15() {
+  function show() {
+    console.log(this.name);
+  }
+
+
+  const person1 = { name: "Jc" };
+  const person2 = { name: "Jayesh" };
+
+
+  show = show.bind(person1).bind(person2);
+  show();
+}
+MCQ15()
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - JC  
+ - Reason:-
+    - because a function which is bound with bind keyword can not be re-bound with other new context, bind chaining does not exist. 
+    -  once the function is bound to a particular object, It will always be bound to that object no matter how many times it's further bounded.
+
+</details>
+
 
 
 
