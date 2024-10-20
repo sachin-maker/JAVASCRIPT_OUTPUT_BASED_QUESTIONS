@@ -2227,6 +2227,159 @@ MCQ20()
     - First Second Third because as there is no resolve in Promise constructor, So it will not go inside of .then block. 
 </details>
 
+___  
+
+
+[Scroll To Top](#my-custom-anchor-point)
+## Day 18
+
+ ####  86. What will be the output ?
+ ```js
+ function MCQ21() {
+  const fetchData = function () {
+    return new Promise((resolve, reject) => {
+      reject();
+    });
+  };
+
+
+  fetchData()
+    .then(() => {
+      console.log("Success 1");
+    })
+    .catch(() => {
+      console.log("Error 1");
+    })
+    .then(() => {
+      console.log("Success 2");
+    });
+}
+MCQ21()
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - Error 1  
+    - Suceess 2  
+ - Reason:-
+    - because in promise chaining .then method below .catch method will be called if in .catch method we are not
+  returning rejected promise ( by default implicitly returns a promise that is handled by it's below .then method )
+</details>
+
+
+ ####  87. What will be the output ?
+ ```js
+ function MCQ24() {
+  const person1 = {
+    name: "Jayesh",
+    age: 24,
+  };
+
+
+  const person2 = person1;
+  person2.name = "Virat";
+
+
+  console.log(person1.name);
+  console.log(person2.name);
+}
+MCQ24()
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - Virat  
+    - Virat  
+ - Reason:-
+    -  because objects are passed as a reference, person1 and person2 will hold the same memory address
+  and altering any property of person2 will modify property of person1 as well. 
+</details>
+
+
+ ####  88. What will be the output ?
+ ```js
+ const fetchData = function(){
+  return new Promise((res, reject)=>{
+    reject("Error!!")
+  })
+}
+
+
+fetchData()
+.then(null, (err)=>{
+  console.log("First");
+  console.log(err);
+})
+.catch(()=>{
+  console.log("Second");
+  console.log(err)
+})
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - First  
+    - Error !!  
+ - Reason:-
+    - After the then(), there is a catch() method. However, since the rejection was already handled by the error callback in the previous then(), the catch() will not execute. In addition, there is a potential error here:
+</details>
+
+####  89. What will be the output ?
+ ```js
+ displayName();
+var displayName = function(){
+  console.log("Priya")
+}
+function displayName(){
+  console.log("dolly")
+}
+displayName();
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - Dolly  
+    - Priya  
+ - Reason:-
+    - Normal function will get execute before, because of function Hoisting concept, then function expression wil get execute. 
+</details>
+
+
+ ####  90. What will be the output ?
+ ```js
+ const inc = async(x) => {
+  x = x + await 1; 
+  return x;
+}
+
+
+const increment = async(x) =>{
+  x = x+1; 
+  return x; 
+}
+
+inc(1)
+.then((x)=>{ 
+  increment(x) 
+  .then((x)=>console.log(x)) 
+})
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - 3  
+
+</details>
+
+
 
 
 
