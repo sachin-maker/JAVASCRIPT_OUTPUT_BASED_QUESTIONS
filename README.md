@@ -1658,3 +1658,191 @@ MCQ5()
     -  delete keyword can not delete local variables ( declared with var, let, and const ) and functions.
     - delete keyword can delete global variables as they are property of window object.
 </details>
+
+___  
+
+
+[Scroll To Top](#my-custom-anchor-point)
+## Day 15
+
+ ####  71. What will be the output ?
+ ```js
+ function MCQ6() {
+  const arr = [];
+
+
+  for (var i = 0; i < 5; i++) {
+    arr[i] = function () {
+      return i;
+    };
+  }
+
+
+  console.log(arr[0]());
+  console.log(arr[4]());
+
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - 5  
+    - 5  
+ - Reason:-
+    - because variables declared with var keyword are function-scoped or globally-scoped but not blocked scoped.  
+    -   Inner function will form the closure and points to the updated value of i that is 5.
+    - In the case of Let variable, as they are blocked scoped so inner function will hold different values of i from 0 to 4.
+
+</details>
+
+ ####  72. What will be the output ?
+ ```js
+ function MCQ7() {
+  let person = { name: "Jayesh" };
+  const personArray = [person];
+  person = null;
+  console.log(personArray);
+
+
+  personArray = [];
+  console.log(personArray);
+}
+MCQ7()
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - { name: "Jayesh" };  
+    - Type Error, assignment to const variable is not allowd  
+</details>
+
+ ####  73. What will be the output ?
+ ```js
+ function MCQ8() {
+  const value = { number: 10 };
+
+
+  const addition = (x = { ...value }) => {
+    console.log((x.number += 5));
+  };
+
+
+  addition();
+  addition();
+  addition(value);
+  addition(value);
+}
+MCQ8()
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - 15  
+    - 15
+    - 15
+    - 20  
+ - Reason:-
+    - `First Call: addition():`   
+        - The function addition() is called without any arguments, so it uses the default parameter x = { ...value }. This creates a shallow copy of the value object.
+        - The shallow copy means that the number property of the new object is 10 (from value), but it is a separate object from value.
+        - Then, the function adds 5 to x.number, resulting in x.number = 15.
+        - console.log(x.number) logs 15.
+    - `Second Call: addition():`
+        -  Again, addition() is called without arguments, so a new shallow copy of value is created (separate from the first one).
+        - The function adds 5, resulting in x.number = 15 again.  
+       
+    - `Third Call: addition(value):`
+        - This time, value is passed as the argument x, so no copy is made.
+        - The function directly modifies the value object.
+        - Initially, value.number = 10, and the function adds 5, making value.number = 15.
+        - console.log(x.number) logs 15.
+    - `Fourth Call: addition(value):`
+        - Now, value has already been modified by the previous call and its number property is 15.
+        - The function adds 5 again, resulting in value.number = 20.
+</details>
+
+ ####  74. What will be the output ?
+ ```js
+ function MCQ9() {
+  function makePerson() {
+    return {
+      userName: "Jayesh",
+      ref: this,
+    };
+  }
+
+
+  const person = makePerson();
+  console.log(person.ref.userName);
+}
+MCQ9()
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - undefined  
+ - Reason:-
+    - because "this" keyword in makePerson function will refer to the window object,
+    - person.ref.userName is same as Window.userName and no property named with userName is present in window object, Hence It will console undefined.
+
+- Corrected version
+```js
+function makePerson2() {
+    return {
+      userName: "Jayesh",
+      // 👇 Here, We have assigned a function to ref property of an object, and function's "this" will point to the returned object.
+      ref: function () {
+        return this;
+      },
+    };
+  }
+
+
+  const person2 = makePerson2();
+  console.log(person2.ref().userName); // Jayesh
+}
+MCQ9();
+
+```
+</details> 
+
+####  75. What will be the output ?
+ ```js
+ function MCQ10() {
+  const user = {
+    userName: "Jayesh",
+    displayName: function () {
+      console.log(this.userName);
+    },
+  };
+
+
+  setTimeout(user.displayName, 1000);
+}
+MCQ10()
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - undefiend  
+ - Reason:-
+    - because setTimeout is using user.displayName as a callback function rather than object method.
+  
+    -  callback function's "this" will refer to the window object and It will console undefined as there is no property such as userName in the window object.  
+- Corrected Version
+```js
+setTimeout(function () {
+    user.displayName(); // Here, displayName is called by user object ( object method ). Hence, "this" will refer to user object.
+  }, 1000);
+}
+
+```
+</details>
+
+
+
+
