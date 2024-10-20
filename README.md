@@ -2061,6 +2061,173 @@ MCQ15()
 </details>
 
 
+___  
+
+
+[Scroll To Top](#my-custom-anchor-point)
+## Day 17
+
+
+
+ ####  81. What will be the output ?
+ ```js
+ function MCQ16() {
+  let person1 = {
+    name: { firstName: "Jayesh" },
+    age: 24,
+  };
+  let person2 = { ...person1 };
+
+
+  person2.name.firstName = "Virat";
+  person2.age = 33;
+
+
+  console.log(person1.name.firstName);
+  console.log(person1.age);
+}
+MCQ16()
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - Virat  
+    - 24  
+ - Reason:-
+    - person2 is created as a shallow copy of person1 using the spread operator: 
+    - This means that while person2 has its own copy of the age property, the name property points to the same object reference as person1.name. So both person1.name and person2.name refer to the same object.
+    - When you change the firstName in person2:This changes the firstName property in the shared object that both person1.name and person2.name point to. Therefore, person1.name.firstName is also updated to "Virat".
+    - Changing person2.age does not affect person1.age because age is a primitive value. person2 has its own copy of the age property:person1.age remains 24 because age is a primitive type and was copied, not referenced.
+</details>
+
+ ####  82. What will be the output ?
+ ```js
+ function MCQ17() {
+  for (var i = 0; i < 5; i++) {
+    setTimeout((i) => {
+        console.log(i);
+      },1000,i);
+  }
+}
+MCQ17()
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - 0 1 2 3 4  
+ - Reason:-
+    - because as we are passing i ( 0 to 4 ) value as an argument to setTimeout callback function
+  therefore this will console different values of i from 0 to 4.
+    - if there was no argument passed to setTimeout callback function then the output would be 5 5 5 5 5 because variables declared
+    -  with var keyword are function-scoped or globally-scoped but not blocked scoped. Inner function i would point to the updated value of i that is 5.
+</details>
+
+ ####  83. What will be the output ?
+ ```js
+ function MCQ18() {
+  console.log(1);
+
+
+  async function fetchData() {
+    console.log(2);
+    let result = await Promise.resolve(3);
+    console.log(result);
+  }
+
+
+  fetchData();
+  console.log(4);
+}
+MCQ18()
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - 1  
+    - 2
+    - 4
+    - 3  
+ - Reason:-
+    -  beacause promise is used to handle the asynchronous result of an operation and
+  callback functions attached to the promises are stored into microtask queue.
+    - So, first synchronous code will be executed i.e 1,2,4 and once callstack is empty, event loop pushes the microtask queue's task into callstack
+  callstack will start executing the task and It will console 3 at last.
+
+</details>
+
+
+ ####  84. What will be the output ?
+ ```js
+ function MCQ19() {
+  console.log("start");
+
+
+  const promise = new Promise((resolve) => {
+    console.log(1);
+    resolve(2);
+    console.log(3);
+  });
+
+
+  promise.then((result) => {
+    console.log(result);
+  });
+
+
+  console.log("end");
+}
+MCQ19()
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - start  
+    - 1
+    - 3
+    - end 
+    - 2  
+ - Reason:-
+    -  beacause The function we pass into the Promise constructor runs synchronously,
+  but anything that depends on its resolution ( resolve or reject ) will be called asynchronously.
+    -  Even if the promise resolves immediately, any handlers ( callback attached to promise then and catch ) will execute asynchronously.
+</details>
+
+ ####  85. What will be the output ?
+ ```js
+ function MCQ20() {
+  console.log("First");
+
+
+  const promise = new Promise((resolve) => {
+    console.log("Second");
+  });
+
+
+  promise.then((result) => {
+    console.log(result);
+  });
+
+
+  console.log("Third");
+}
+MCQ20()
+```
+<details>
+ <summary>View Answer</summary>
+
+ - Output:-  
+    - first  
+    - Second
+    - third  
+ - Reason:-
+    - First Second Third because as there is no resolve in Promise constructor, So it will not go inside of .then block. 
+</details>
+
+
 
 
 
